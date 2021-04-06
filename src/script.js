@@ -34,7 +34,7 @@ scene.fog = new THREE.Fog(0xffffff, 0, 17)
 const loadingManager = new THREE.LoadingManager(
   //Loaded
   () => {
-    console.log("load")
+    // console.log("loaded")
     window.setTimeout(() => {
       gsap.to(".loading-overlay", {
         opacity: 0,
@@ -50,7 +50,7 @@ const loadingManager = new THREE.LoadingManager(
   //Progress
   (itemUrl, itemLoaded, itemTotal) => {
     const progressRatio = itemLoaded / itemTotal
-    console.log(progressRatio)
+    // console.log(progressRatio)
   }
 )
 // Texture loader
