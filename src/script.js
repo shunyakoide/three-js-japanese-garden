@@ -31,15 +31,37 @@ scene.fog = new THREE.Fog(0xffffff, 0, 17)
 /**
  * Loaders
  */
+const loadingManager = new THREE.LoadingManager(
+  //Loaded
+  () => {
+    console.log("load")
+    window.setTimeout(() => {
+      gsap.to(".loading-overlay", {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          gsap.set(".loading-overlay", {
+            display: "none",
+          })
+        },
+      })
+    })
+  },
+  //Progress
+  (itemUrl, itemLoaded, itemTotal) => {
+    const progressRatio = itemLoaded / itemTotal
+    console.log(progressRatio)
+  }
+)
 // Texture loader
-const textureLoader = new THREE.TextureLoader()
+const textureLoader = new THREE.TextureLoader(loadingManager)
 
 // Draco loader
-const dracoLoader = new DRACOLoader()
+const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath("draco/")
 
 // GLTF loader
-const gltfLoader = new GLTFLoader()
+const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
 /**
