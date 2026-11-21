@@ -76,7 +76,7 @@ scene.add(floorMesh)
 /**
  * Koi Fish
  */
-const matcapTexture = textureLoader.load("/matcaps11.png")
+const matcapTexture = textureLoader.load("./matcaps11.png")
 const koiMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
 
 //Koi Fish path
@@ -108,7 +108,7 @@ let flow
 
 //model
 // https://clara.io/view/b47726c8-02cf-4eb5-b275-d9b2be591bad
-gltfLoader.load("/koi.glb", (gltf) => {
+gltfLoader.load("./koi.glb", (gltf) => {
   const koi = gltf.scene.children.find((child) => child.name === "fish")
   koi.children[0].material = koiMaterial
 
@@ -155,7 +155,7 @@ scene.add(waterMesh)
 /**
  * Texture
  */
-const bakedTexture = textureLoader.load("/jg-bake.jpg")
+const bakedTexture = textureLoader.load("./jg-bake.jpg")
 bakedTexture.flipY = false
 bakedTexture.encoding = THREE.sRGBEncoding
 
@@ -171,7 +171,7 @@ const lampMeshMaterial = new THREE.MeshBasicMaterial({ color: "#f5deb3" })
 /**
  * Model
  */
-gltfLoader.load("/japanese-garden.glb", (gltf) => {
+gltfLoader.load("./japanese-garden.glb", (gltf) => {
   const bakedMesh = gltf.scene.children.find((child) => child.name === "bake")
   const shishiodoshiMesh = gltf.scene.children.find(
     (child) => child.name === "shishi"
